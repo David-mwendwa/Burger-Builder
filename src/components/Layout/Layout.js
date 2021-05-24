@@ -7,7 +7,7 @@ import classes from './Layout.css';
 const Layout = ({ children }) => (
   <Auxiliary>
     <div>Toolbar, SideDrawer, Backdrop</div>
-    <main className={classes.Layout}>{children}</main>
+    <main className={classes.Content}>{children}</main>
   </Auxiliary>
 );
 
