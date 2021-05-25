@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { BurgerIngredient } from './BurgerIngredient/BurgerIngredient';
+import BuildControls from './BuildControls/BuildControls'
 
 import classes from './Burger.css';
 
@@ -19,6 +20,7 @@ const Burger = ({ ingredients }) => {
       <BurgerIngredient type="bread-top" />
       {transformedIngredients}
       <BurgerIngredient type="bread-bottom" />
+      <BuildControls />
     </div>
   );
 };
