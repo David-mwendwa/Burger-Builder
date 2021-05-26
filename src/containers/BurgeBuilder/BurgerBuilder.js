@@ -24,7 +24,7 @@ export class BurgerBuilder extends React.Component {
     },
     totalPrice: 4,
     purchasable: false,
-    purshasing: false
+    purshasing: false,
   };
 
   updatePurshaseState = () => {
@@ -64,9 +64,13 @@ export class BurgerBuilder extends React.Component {
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
   };
 
-  purshaseHandler = () => { 
+  purshaseHandler = () => {
     this.setState({ purshasing: true });
-  }
+  };
+
+  purshaseCancelHandler = () => {
+    this.setState({ purshasing: false });
+  };
 
   render() {
     const disabledInfo = { ...this.state.ingredients };
@@ -74,7 +78,10 @@ export class BurgerBuilder extends React.Component {
 
     return (
       <Auxiliary>
-        <Modal show={this.state.purshasing}>
+        <Modal
+          show={this.state.purshasing}
+          modalClosed={this.purshaseCancelHandler}
+        >
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
