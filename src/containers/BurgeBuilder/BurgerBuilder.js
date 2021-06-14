@@ -72,6 +72,10 @@ export class BurgerBuilder extends React.Component {
     this.setState({ purshasing: false });
   };
 
+  purchaseContinueHandler = () => {
+    alert('You continue');
+  };
+
   render() {
     const disabledInfo = { ...this.state.ingredients };
     for (let key in disabledInfo) disabledInfo[key] = disabledInfo[key] <= 0;
@@ -80,9 +84,12 @@ export class BurgerBuilder extends React.Component {
       <Auxiliary>
         <Modal
           show={this.state.purshasing}
-          modalClosed={this.purshaseCancelHandler}
-        >
-          <OrderSummary ingredients={this.state.ingredients} />
+          modalClosed={this.purshaseCancelHandler}>
+          <OrderSummary
+            ingredients={this.state.ingredients}
+            purshaseCancelled={this.purshaseCancelHandler}
+            purshaseContinued={this.purchaseContinueHandler}
+          />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
