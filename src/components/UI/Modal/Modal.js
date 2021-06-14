@@ -21,8 +21,8 @@ class Modal extends Component {
         <div
           className={classes.Modal}
           style={{
-            transform: show ? 'translateY(0)' : 'translateY(-100vh)',
-            opacity: show ? '1' : '0',
+            transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+            opacity: this.props.show ? '1' : '0',
           }}
         >
           {this.props.children}
@@ -30,8 +30,6 @@ class Modal extends Component {
       </Auxiliary>
     )
   }
-} = ({ children, show, modalClosed }) => (
-  
-);
+}
 
 export default Modal;
