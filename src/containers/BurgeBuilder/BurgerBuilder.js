@@ -6,6 +6,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 
@@ -16,7 +17,7 @@ const INGREDIENT_PRICES = {
   bacon: 0.7,
 };
 
-export class BurgerBuilder extends React.Component {
+class BurgerBuilder extends React.Component {
   state = {
     ingredients: {
       salad: 0,
@@ -132,3 +133,5 @@ export class BurgerBuilder extends React.Component {
     );
   }
 }
+
+export default withErrorHandler(BurgerBuilder, axios);
