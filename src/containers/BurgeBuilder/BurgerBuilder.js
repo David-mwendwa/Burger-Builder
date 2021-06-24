@@ -28,14 +28,14 @@ class BurgerBuilder extends React.Component {
   };
 
   componentDidMount() {
-    axios
-      .get(
-        'https://burger-builder-389de-default-rtdb.firebaseio.com/ingredients.json'
-      )
-      .then((response) => {
-        this.setState({ ingredients: response.data });
-      })
-      .catch((error) => this.setState({ error: true }));
+    // axios
+    //   .get(
+    //     'https://burger-builder-389de-default-rtdb.firebaseio.com/ingredients.json'
+    //   )
+    //   .then((response) => {
+    //     this.setState({ ingredients: response.data });
+    //   })
+    //   .catch((error) => this.setState({ error: true }));
   }
 
   updatePurshaseState = () => {
