@@ -14,7 +14,6 @@ import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 
 class BurgerBuilder extends React.Component {
   state = {
-    purchasable: false,
     purshasing: false,
     loading: false,
     error: false,
@@ -31,13 +30,12 @@ class BurgerBuilder extends React.Component {
     //   .catch((error) => this.setState({ error: true }));
   }
 
-  updatePurshaseState = () => {
-    const ingredients = { ...this.props.ings };
+  updatePurshaseState(ingredients) {
     const sum = Object.keys(ingredients)
       .map((igKey) => ingredients[igKey])
       .reduce((sum, el) => sum + el, 0);
 
-    this.setState({ purchasable: sum >= 0 });
+    return sum >= 0;
   };
 
   purshaseHandler = () => {
@@ -84,7 +82,7 @@ class BurgerBuilder extends React.Component {
             ingredientAdded={this.props.onIngredientAdded}
             ingredientDeducted={this.props.onIngredientRemoved}
             disabled={disabledInfo}
-            purchasable={this.state.purchasable}
+            purchasable={this.updatePurshaseState(this.props.ings)}
             ordered={this.purshaseHandler}
             price={this.props.price}
           />
@@ -119,7 +117,7 @@ class BurgerBuilder extends React.Component {
 const mapStateToProps = (state) => {
   return {
     ings: state.ingredients,
-    price: state.totalPrice
+    price: state.totalPrice,
   };
 };
 
