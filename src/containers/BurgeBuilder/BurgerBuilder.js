@@ -8,7 +8,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../store/actions';
+import * as burgerBuilderActions from '../../store/actions/index';
 
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 
@@ -36,7 +36,7 @@ class BurgerBuilder extends React.Component {
       .reduce((sum, el) => sum + el, 0);
 
     return sum >= 0;
-  };
+  }
 
   purshaseHandler = () => {
     this.setState({ purshasing: true });
@@ -111,12 +111,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onIngredientAdded: (ingName) =>
-      dispatch({ type: actionTypes.ADD_INGREDIENT, ingredientName: ingName }),
+      dispatch(burgerBuilderActions.addIngredient(ingName)),
     onIngredientRemoved: (ingName) =>
-      dispatch({
-        type: actionTypes.REMOVE_INGREDIENT,
-        ingredientName: ingName,
-      }),
+      dispatch(burgerBuilderActions.removeIngredient(ingName)),
   };
 };
 
