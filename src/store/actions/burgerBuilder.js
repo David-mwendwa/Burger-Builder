@@ -34,7 +34,7 @@ export const initIngredients = () => {
       .get(
         'https://burger-builder-389de-default-rtdb.firebaseio.com/ingredients.json'
       )
-      .then((response) => setIngredients(response.data))
+      .then((response) => dispatch(setIngredients(response.data)))
       .catch((error) => dispatch(fetchIngredientsFailed()));
   };
 };
