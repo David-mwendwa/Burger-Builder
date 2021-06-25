@@ -5,8 +5,8 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import axios from '../../axios-orders'
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as burgerBuilderActions from '../../store/actions/index';
 
@@ -15,20 +15,9 @@ import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 class BurgerBuilder extends React.Component {
   state = {
     purshasing: false,
-    loading: false,
-    error: false,
   };
 
-  componentDidMount() {
-    // axios
-    //   .get(
-    //     'https://burger-builder-389de-default-rtdb.firebaseio.com/ingredients.json'
-    //   )
-    //   .then((response) => {
-    //     this.setState({ ingredients: response.data });
-    //   })
-    //   .catch((error) => this.setState({ error: true }));
-  }
+  componentDidMount() {}
 
   updatePurshaseState(ingredients) {
     const sum = Object.keys(ingredients)
@@ -83,9 +72,6 @@ class BurgerBuilder extends React.Component {
           price={this.props.price}
         />
       );
-    }
-    if (this.state.loading) {
-      orderSummary = <Spinner />;
     }
 
     return (
