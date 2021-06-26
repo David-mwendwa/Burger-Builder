@@ -82,7 +82,7 @@ class ContactData extends Component {
       orderData: formData,
     };
 
-    this.props.onOrderBurger(order)
+    this.props.onOrderBurger(order);
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
@@ -123,7 +123,7 @@ class ContactData extends Component {
       </form>
     );
 
-    if (this.state.loading) form = <Spinner />;
+    if (this.props.loading) form = <Spinner />;
 
     return (
       <div className={classes.ContactData}>
@@ -138,13 +138,18 @@ const mapStateToProps = (state) => {
   return {
     ings: state.ingredients,
     price: state.totalPrice,
+    loading: state.loading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onOrderBurger: (orderData) => dispatch(actions.purshaseBurgerStart(orderData))
-  }
+    onOrderBurger: (orderData) =>
+      dispatch(actions.purshaseBurgerStart(orderData)),
+  };
 };
 
-export default connect(mapStateToProps)(withErrorHandler(ContactData, axios));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(ContactData, axios));
