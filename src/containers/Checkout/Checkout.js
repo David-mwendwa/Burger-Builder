@@ -15,7 +15,7 @@ class Checkout extends Component {
   };
 
   render() {
-    let summary = <Redirect to="/" />
+    let summary = <Redirect to='/' />;
     if (this.props.ings) {
       summary = (
         <div>
@@ -31,15 +31,13 @@ class Checkout extends Component {
         </div>
       );
     }
-    return (
-      {summary}
-    );
+    return summary;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    ings: state.ingredients,
+    ings: state.burgerBuilder.ingredients,
   };
 };
 
