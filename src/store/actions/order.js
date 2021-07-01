@@ -23,6 +23,7 @@ export const purshaseBurgerStart = () => {
 };
 
 export const purshaseBurger = (orderData) => {
+  console.log(orderData)
   return (dispatch) => {
     dispatch(purshaseBurgerStart());
     axios
